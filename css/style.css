@@ -96,10 +96,10 @@ header {
   z-index: 10;
   box-shadow: 0 2px 16px 0 rgba(30,32,60,0.13);
 }
-.navbar.scrolled {
+/* .navbar.scrolled {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 20px;
   padding: 1rem 0px;
-}
+} */
 
 nav {
   width: calc(100vw - 4rem);

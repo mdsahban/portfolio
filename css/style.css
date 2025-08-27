@@ -1368,7 +1368,9 @@ a, a:visited, a:active, a:hover {
 
 /* Mobile nav layout */
 @media (max-width: 900px) {
-  .menu-btn { display: flex; }
+   .menu-btn { 
+    display: flex !important; 
+  }
   nav {
     justify-content: space-between;
   }

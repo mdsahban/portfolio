@@ -43,80 +43,70 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Mobile Menu Toggle
-const menuList = document.getElementById("menu");
-const menuBtn = document.getElementById("menuicon");
-const header = document.querySelector('header');
-
-function toggleMenu() {
-    if (menuList.style.maxHeight === "0px" || menuList.style.maxHeight === "") {
-        menuList.style.maxHeight = "295px";
-        menuBtn.className = "fa fa-times";
-        header.style.background = "rgba(255, 255, 255, 0.95)";
-    } else {
-        menuList.style.maxHeight = "0px";
-        menuBtn.className = "fa fa-bars";
-    }
-}
-
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    if (!menuList.contains(event.target) && !menuBtn.contains(event.target)) {
-        menuList.style.maxHeight = "0px";
-        menuBtn.className = "fa fa-bars";
-    }
-});
-
-// Update menu links to use section navigation
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetIndex = Array.from(sections).findIndex(section => section.id === targetId);
-        if (targetIndex !== -1) {
-            sections[currentSection].classList.remove('active');
-            currentSection = targetIndex;
-            sections[currentSection].classList.add('active');
-            updateNavButtons();
-        }
-    });
-});
-
-// Update navigation buttons visibility
-function updateNavButtons() {
-    prevButton.style.display = currentSection === 0 ? 'none' : 'flex';
-    nextButton.style.display = currentSection === sections.length - 1 ? 'none' : 'flex';
-}
-
-// Initial button visibility
-updateNavButtons();
-
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // Close mobile menu after click
+        const menuList = document.getElementById('menu');
+        const menuBtn = document.getElementById('menuicon');
+        if (menuList && menuBtn) {
+            menuList.style.maxHeight = '0px';
+            menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
         }
     });
 });
 
-// Header scroll effect
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 150) {
-        header.style.position = "fixed";
-        header.style.background = "rgba(255, 255, 255, 0.95)";
-        header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
-    } else {
-        header.style.position = "fixed";
-        header.style.background = "rgba(255, 255, 255, 0.95)";
-        header.style.boxShadow = "none";
-    }
-});
+// Mobile Menu Toggle
+(function () {
+    const menuList = document.getElementById('menu');
+    const menuBtn = document.getElementById('menuicon');
+    if (!menuList || !menuBtn) return;
+
+    // Initialize closed state
+    menuList.style.maxHeight = '0px';
+
+    menuBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isClosed = menuList.style.maxHeight === '0px' || menuList.style.maxHeight === '';
+        if (isClosed) {
+            menuList.style.maxHeight = '295px';
+            menuBtn.innerHTML = '<i class="fa fa-times"></i>';
+        } else {
+            menuList.style.maxHeight = '0px';
+            menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+        }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!menuList.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuList.style.maxHeight = '0px';
+            menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+        }
+    });
+})();
+
+// Header scroll effect (dark theme friendly)
+(function () {
+    const header = document.querySelector('header');
+    if (!header) return;
+    const applyScrolled = () => {
+        if (window.scrollY > 150) {
+            header.style.boxShadow = '0 2px 16px 0 rgba(30,32,60,0.25)';
+        } else {
+            header.style.boxShadow = '0 2px 16px 0 rgba(30,32,60,0.13)';
+        }
+    };
+    window.addEventListener('scroll', applyScrolled);
+    applyScrolled();
+})();
 
 // Add animation to skills and projects on scroll
 const animateOnScroll = function() {
@@ -149,90 +139,13 @@ window.addEventListener('load', function() {
 // Add scroll event listener for animations
 window.addEventListener('scroll', animateOnScroll);
 
-// Form submission handling
-const contactForm = document.querySelector('.contact form');
-if (contactForm) {
+// Contact form submission handling
+(function () {
+    const contactForm = document.querySelector('.contact-form');
+    if (!contactForm) return;
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         alert('Thank you for your message! I will get back to you soon.');
         this.reset();
     });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = Array.from(document.querySelectorAll('.section'));
-    const navLinks = Array.from(document.querySelectorAll('nav ul li a'));
-    const prevArrow = document.getElementById('prev-arrow');
-    const nextArrow = document.getElementById('next-arrow');
-    const dotsContainer = document.querySelector('.dots');
-    let current = 0;
-
-    // Create dots
-    dotsContainer.innerHTML = '';
-    sections.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.addEventListener('click', () => showSection(i));
-        dotsContainer.appendChild(dot);
-    });
-    const dots = Array.from(document.querySelectorAll('.dot'));
-
-    function showSection(idx) {
-        sections.forEach((sec, i) => {
-            if (i === idx) {
-                sec.classList.add('active');
-            } else {
-                sec.classList.remove('active');
-            }
-        });
-        navLinks.forEach((link, i) => {
-            if (i === idx) link.classList.add('active');
-            else link.classList.remove('active');
-        });
-        dots.forEach((dot, i) => {
-            if (i === idx) dot.classList.add('active');
-            else dot.classList.remove('active');
-        });
-        prevArrow.disabled = idx === 0;
-        nextArrow.disabled = idx === sections.length - 1;
-        current = idx;
-    }
-
-    // Arrow navigation
-    prevArrow.onclick = function () {
-        if (current > 0) showSection(current - 1);
-    };
-    nextArrow.onclick = function () {
-        if (current < sections.length - 1) showSection(current + 1);
-    };
-
-    // Navbar link logic
-    navLinks.forEach((link, i) => {
-        link.onclick = function (e) {
-            e.preventDefault();
-            showSection(i);
-        };
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-            if (current < sections.length - 1) showSection(current + 1);
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-            if (current > 0) showSection(current - 1);
-        }
-    });
-
-    // Show first section on load
-    showSection(0);
-
-    // Contact form (unchanged)
-    const contactForm = document.querySelector('.contact form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-    }
-}); 
+})(); 

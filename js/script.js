@@ -5,23 +5,23 @@ let currentSection = 0;
 // Initialize first section as active
 sections[0].classList.add('active');
 
-// Navigation buttons
-const navButtons = document.createElement('div');
-navButtons.className = 'nav-buttons';
+// // Navigation buttons
+// const navButtons = document.createElement('div');
+// navButtons.className = 'nav-buttons';
 
-const prevButton = document.createElement('button');
-prevButton.className = 'nav-btn';
-prevButton.innerHTML = '<i class="fa fa-arrow-up"></i>';
-prevButton.addEventListener('click', () => navigateSection(-1));
+// const prevButton = document.createElement('button');
+// prevButton.className = 'nav-btn';
+// prevButton.innerHTML = '<i class="fa fa-arrow-up"></i>';
+// prevButton.addEventListener('click', () => navigateSection(-1));
 
-const nextButton = document.createElement('button');
-nextButton.className = 'nav-btn';
-nextButton.innerHTML = '<i class="fa fa-arrow-down"></i>';
-nextButton.addEventListener('click', () => navigateSection(1));
+// const nextButton = document.createElement('button');
+// nextButton.className = 'nav-btn';
+// nextButton.innerHTML = '<i class="fa fa-arrow-down"></i>';
+// nextButton.addEventListener('click', () => navigateSection(1));
 
-navButtons.appendChild(prevButton);
-navButtons.appendChild(nextButton);
-document.body.appendChild(navButtons);
+// navButtons.appendChild(prevButton);
+// navButtons.appendChild(nextButton);
+// document.body.appendChild(navButtons);
 
 // Navigation function
 function navigateSection(direction) {

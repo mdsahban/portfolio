@@ -34,7 +34,7 @@ export default function AboutSection() {
   const textRef = useRef<HTMLDivElement>(null)
 
   return (
-    <section className="min-h-screen bg-[#0C0C0C] flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 relative overflow-hidden">
+    <section id="about" className="min-h-screen bg-[#0C0C0C] flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 relative overflow-hidden">
       {/* Decorative Images */}
       {decorativeImages.map((img, i) => (
         <FadeIn
@@ -59,7 +59,7 @@ export default function AboutSection() {
       {/* Animated Text */}
       <div ref={textRef} className="max-w-[560px] text-center">
         <AnimatedText
-          text="With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!"
+          text="With more than five years of experience in design and development, i focus on branding, web design, user experience, and cybersecurity. i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!"
           className="text-[#D7E2EA] font-medium text-[clamp(1rem,2vw,1.35rem)] leading-relaxed"
         />
       </div>

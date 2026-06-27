@@ -3,6 +3,9 @@ import MarqueeSection from './sections/MarqueeSection'
 import AboutSection from './sections/AboutSection'
 import ServicesSection from './sections/ServicesSection'
 import ProjectsSection from './sections/ProjectsSection'
+import SkillsSection from './sections/SkillsSection'
+import ContactSection from './sections/ContactSection'
+import FooterSection from './sections/FooterSection'
 
 export default function App() {
   return (
@@ -12,6 +15,9 @@ export default function App() {
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
+      <SkillsSection />
+      <ContactSection />
+      <FooterSection />
     </main>
   )
 }

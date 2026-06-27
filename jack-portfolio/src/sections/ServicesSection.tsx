@@ -3,28 +3,28 @@ import FadeIn from '../components/FadeIn'
 const services = [
   {
     number: '01',
-    title: '3D Modeling',
-    description: 'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.',
+    title: 'Web Development',
+    description: 'Building responsive, modern, and conversion-focused websites with clean code, optimal performance, and excellent user experience using HTML, CSS, JavaScript, and WordPress.',
   },
   {
     number: '02',
-    title: 'Rendering',
-    description: 'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.',
+    title: 'UI/UX Design',
+    description: 'Creating intuitive and visually appealing user interfaces with attention to layout, typography, color psychology, and accessibility standards to enhance user engagement.',
   },
   {
     number: '03',
-    title: 'Motion Design',
-    description: 'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.',
+    title: 'Cybersecurity',
+    description: 'Implementing security best practices, threat analysis, network security, and SOC fundamentals to protect digital assets and ensure data integrity across web applications.',
   },
   {
     number: '04',
     title: 'Branding',
-    description: 'Crafting cohesive visual identities -- from logos to full brand systems -- that communicate a clear and memorable presence.',
+    description: 'Crafting cohesive visual identities from logos to complete brand systems that communicate a clear, memorable, and authentic presence to target audiences.',
   },
   {
     number: '05',
-    title: 'Web Design',
-    description: 'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.',
+    title: 'Full Stack Solutions',
+    description: 'Developing end-to-end solutions combining frontend, backend, and database technologies with focus on scalability, maintainability, and robust performance.',
   },
 ]
 

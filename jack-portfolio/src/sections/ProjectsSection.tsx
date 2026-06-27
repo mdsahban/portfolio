@@ -6,8 +6,8 @@ import LiveProjectButton from '../components/LiveProjectButton'
 const projects = [
   {
     number: '01',
-    title: 'Nextlevel Studio',
-    category: 'Client',
+    title: 'E-commerce Website',
+    category: 'Freelance',
     images: {
       col1: [
         'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
@@ -15,11 +15,12 @@ const projects = [
       ],
       col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
     },
+    link: 'https://ngenev.com',
   },
   {
     number: '02',
-    title: 'Aura Brand Identity',
-    category: 'Personal',
+    title: 'Real-time Video & Chat',
+    category: 'Web App',
     images: {
       col1: [
         'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
@@ -27,11 +28,12 @@ const projects = [
       ],
       col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
     },
+    link: 'https://github.com/mdsahban/videocall.js',
   },
   {
     number: '03',
-    title: 'Solaris Digital',
-    category: 'Client',
+    title: 'Webpage Summarizer',
+    category: 'Chrome Extension',
     images: {
       col1: [
         'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
@@ -39,6 +41,7 @@ const projects = [
       ],
       col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
     },
+    link: 'https://github.com/mdsahban/Webpage-Summarizer',
   },
 ]
 
@@ -84,7 +87,9 @@ function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* CTA Button */}
       <div className="mb-8 sm:mb-10 md:mb-12">
-        <LiveProjectButton />
+        <a href={project.link} target="_blank" rel="noopener noreferrer">
+          <LiveProjectButton />
+        </a>
       </div>
 
       {/* Image Grid */}
@@ -120,12 +125,13 @@ export default function ProjectsSection() {
   return (
     <section
       ref={containerRef}
+      id="works"
       className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-5 sm:px-8 md:px-10 pt-20 pb-20"
     >
       {/* Heading */}
       <FadeIn className="text-center mb-20">
         <h2 className="hero-heading text-[clamp(3rem,12vw,160px)] font-black uppercase leading-none tracking-tight">
-          Project
+          Projects
         </h2>
       </FadeIn>
 

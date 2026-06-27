@@ -3,7 +3,7 @@ import ContactButton from '../components/ContactButton'
 import FadeIn from '../components/FadeIn'
 import Magnet from '../components/Magnet'
 
-const navLinks = ['About', 'Price', 'Projects', 'Contact']
+const navLinks = ['About', 'Works', 'Skills', 'Contact']
 
 export default function HeroSection() {
   return (
@@ -26,14 +26,14 @@ export default function HeroSection() {
       {/* Hero Heading */}
       <FadeIn delay={0.15} y={40} as="div" className="overflow-hidden flex-1 flex items-center justify-center">
         <h1 className="hero-heading text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center">
-          Hi, i&apos;m jack
+          Hi, i&apos;m sahban
         </h1>
       </FadeIn>
 
       {/* Bottom Bar */}
       <FadeIn delay={0.35} y={20} as="div" className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10">
         <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px] text-[clamp(0.75rem,1.4vw,1.5rem)]">
-          a 3d creator driven by crafting striking and unforgettable projects
+          web developer + soc enthusiast crafting exceptional digital experiences
         </p>
         <FadeIn delay={0.5} y={20}>
           <ContactButton />
@@ -45,7 +45,7 @@ export default function HeroSection() {
         <Magnet padding={150} strength={3}>
           <img
             src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-            alt="Jack"
+            alt="Sahban"
             className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] rounded-3xl"
           />
         </Magnet>

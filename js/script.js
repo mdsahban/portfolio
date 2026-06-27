@@ -5,33 +5,11 @@ let currentSection = 0;
 // Initialize first section as active
 sections[0].classList.add('active');
 
-// // Navigation buttons
-// const navButtons = document.createElement('div');
-// navButtons.className = 'nav-buttons';
-
-// const prevButton = document.createElement('button');
-// prevButton.className = 'nav-btn';
-// prevButton.innerHTML = '<i class="fa fa-arrow-up"></i>';
-// prevButton.addEventListener('click', () => navigateSection(-1));
-
-// const nextButton = document.createElement('button');
-// nextButton.className = 'nav-btn';
-// nextButton.innerHTML = '<i class="fa fa-arrow-down"></i>';
-// nextButton.addEventListener('click', () => navigateSection(1));
-
-// navButtons.appendChild(prevButton);
-// navButtons.appendChild(nextButton);
-// document.body.appendChild(navButtons);
-
 // Navigation function
 function navigateSection(direction) {
     sections[currentSection].classList.remove('active');
     currentSection = (currentSection + direction + sections.length) % sections.length;
     sections[currentSection].classList.add('active');
-    
-    // Update button visibility
-    prevButton.style.display = currentSection === 0 ? 'none' : 'flex';
-    nextButton.style.display = currentSection === sections.length - 1 ? 'none' : 'flex';
 }
 
 // Keyboard navigation
@@ -93,7 +71,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 })();
 
-// Header scroll effect (dark theme friendly)
+// Header scroll effect
 (function () {
     const header = document.querySelector('header');
     if (!header) return;
@@ -139,13 +117,66 @@ window.addEventListener('load', function() {
 // Add scroll event listener for animations
 window.addEventListener('scroll', animateOnScroll);
 
-// Contact form submission handling
+// Contact form submission handling with Web3Forms
 (function () {
     const contactForm = document.querySelector('.contact-form');
     if (!contactForm) return;
-    contactForm.addEventListener('submit', function(e) {
+
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        alert('Thank you for your message! I will get back to you soon.');
-        this.reset();
+
+        const submitBtn = this.querySelector('.send-btn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoader = submitBtn.querySelector('.btn-loader');
+        const formMessage = document.getElementById('form-message');
+        const formData = new FormData(this);
+
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'flex';
+
+        try {
+            // Submit to Web3Forms
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                // Success message
+                formMessage.style.display = 'block';
+                formMessage.className = 'form-message success';
+                formMessage.textContent = '✓ Thank you! Your message has been sent successfully.';
+                
+                // Reset form
+                this.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                // Error message
+                throw new Error(data.message || 'Form submission failed');
+            }
+        } catch (error) {
+            // Error message
+            formMessage.style.display = 'block';
+            formMessage.className = 'form-message error';
+            formMessage.textContent = '✗ Error: ' + (error.message || 'Something went wrong. Please try again.');
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            btnText.style.display = 'flex';
+            btnLoader.style.display = 'none';
+        }
     });
-})(); 
+})();

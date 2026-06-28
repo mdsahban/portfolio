@@ -1,6 +1,35 @@
 import FadeIn from '../components/FadeIn'
+import { useState } from 'react'
 
 export default function ContactSection() {
+  const [status, setStatus] = useState<string>('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    
+    setStatus('Sending...')
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setStatus("Thank you for contacting! I will get back to you soon.")
+        form.reset()
+      } else {
+        setStatus("Oops! Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setStatus("Oops! Something went wrong. Please try again.")
+    }
+  }
+
   return (
     <section id="contact" className="min-h-screen bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 relative overflow-hidden">
       <FadeIn className="text-center mb-16 sm:mb-20">
@@ -15,7 +44,7 @@ export default function ContactSection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
         {/* Contact Form */}
         <FadeIn delay={0.2} className="bg-[#151515] p-8 md:p-12 rounded-[40px] border border-white/5">
-          <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <input type="hidden" name="access_key" value="c6737efc-c632-4e5a-8dd9-239906053dc1" />
             <input type="hidden" name="from_name" value="Portfolio Contact" />
             
@@ -38,9 +67,15 @@ export default function ContactSection() {
             
             <textarea name="message" placeholder="Your message" required rows={4} className="w-full bg-transparent border-b border-white/20 pb-3 text-white placeholder-white/50 focus:outline-none focus:border-white transition-colors resize-none"></textarea>
             
-            <button type="submit" className="bg-white text-[#0C0C0C] font-bold uppercase tracking-wider py-4 px-8 rounded-full hover:bg-white/90 transition-colors w-full sm:w-auto">
-              Send Message
+            <button type="submit" disabled={status === 'Sending...'} className="bg-white text-[#0C0C0C] font-bold uppercase tracking-wider py-4 px-8 rounded-full hover:bg-white/90 transition-colors w-full sm:w-auto disabled:opacity-70">
+              {status === 'Sending...' ? 'Sending...' : 'Send Message'}
             </button>
+
+            {status && status !== 'Sending...' && (
+              <div className={`mt-4 text-sm ${status.includes('Oops') ? 'text-red-400' : 'text-green-400'}`}>
+                {status}
+              </div>
+            )}
           </form>
         </FadeIn>
 

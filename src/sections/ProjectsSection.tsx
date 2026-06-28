@@ -71,22 +71,22 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       className="sticky rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8"
     >
       {/* Top Row */}
-      <div className="flex flex-wrap items-end justify-between gap-4 mb-8 sm:mb-10 md:mb-12">
+      <div className="flex flex-wrap items-end justify-between gap-4 mb-4 sm:mb-6 md:mb-8">
         <div className="flex flex-col gap-2">
           <p className="text-[#D7E2EA]/60 font-light uppercase text-xs sm:text-sm tracking-wide">
             {project.category}
           </p>
-          <h3 className="text-[#D7E2EA] font-medium uppercase text-[clamp(1.5rem,4vw,2.5rem)] tracking-tight">
+          <h3 className="text-[#D7E2EA] font-medium uppercase text-[clamp(1.2rem,3.5vw,2rem)] tracking-tight">
             {project.title}
           </h3>
         </div>
-        <p className="text-[#D7E2EA] font-black text-[clamp(2.5rem,8vw,120px)] leading-none">
+        <p className="text-[#D7E2EA] font-black text-[clamp(2rem,7vw,100px)] leading-none">
           {project.number}
         </p>
       </div>
 
       {/* CTA Button */}
-      <div className="mb-8 sm:mb-10 md:mb-12">
+      <div className="mb-6 sm:mb-8 md:mb-10">
         <a href={project.link} target="_blank" rel="noopener noreferrer">
           <LiveProjectButton />
         </a>
@@ -99,12 +99,12 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <img
             src={project.images.col1[0]}
             alt="Project"
-            className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] object-cover h-[clamp(130px,16vw,230px)]"
+            className="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] object-cover h-[clamp(100px,13vw,180px)]"
           />
           <img
             src={project.images.col1[1]}
             alt="Project"
-            className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] object-cover h-[clamp(160px,22vw,340px)]"
+            className="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] object-cover h-[clamp(130px,18vw,260px)]"
           />
         </div>
 
@@ -112,7 +112,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         <img
           src={project.images.col2}
           alt="Project"
-          className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] object-cover h-[clamp(300px,39vw,580px)]"
+          className="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] object-cover h-[clamp(240px,32vw,450px)]"
         />
       </div>
     </motion.div>

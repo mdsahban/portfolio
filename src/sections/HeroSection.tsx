@@ -44,9 +44,9 @@ export default function HeroSection() {
       <FadeIn delay={0.6} y={30} as="div" className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
         <Magnet padding={150} strength={3}>
           <img
-            src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-            alt="Sahban"
-            className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] rounded-3xl"
+            src="/sahban_3d_avatar.png"
+            alt="Sahban Avatar"
+            className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] rounded-[50px] md:rounded-[70px] lg:rounded-[90px] mb-4 sm:mb-6"
           />
         </Magnet>
       </FadeIn>

@@ -44,9 +44,9 @@ export default function HeroSection() {
       <FadeIn delay={0.6} y={30} as="div" className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
         <Magnet padding={150} strength={3}>
           <img
-            src="/sahban_3d_avatar.png"
+            src="/image/portfolio.png"
             alt="Sahban Avatar"
-            className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] rounded-[50px] md:rounded-[70px] lg:rounded-[90px] mb-4 sm:mb-6"
+            className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] rounded-[50px] md:rounded-[70px] lg:rounded-[90px] mb-4 sm:mb-6 object-cover"
           />
         </Magnet>
       </FadeIn>

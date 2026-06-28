@@ -59,7 +59,7 @@ export default function AboutSection() {
       {/* Animated Text */}
       <div ref={textRef} className="max-w-[560px] text-center">
         <AnimatedText
-          text="With more than five years of experience in design and development, i focus on branding, web design, user experience, and cybersecurity. i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!"
+          text="Aspiring software engineer with hands-on experience in Java backend development, REST API design, cybersecurity, and AI-integrated application development. Proficient in Spring Boot, JavaScript, and secure application design, with a track record of shipping production-grade projects targeting scalability, security, and generative AI."
           className="text-[#D7E2EA] font-medium text-[clamp(1rem,2vw,1.35rem)] leading-relaxed"
         />
       </div>

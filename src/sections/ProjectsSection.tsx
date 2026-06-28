@@ -6,8 +6,8 @@ import LiveProjectButton from '../components/LiveProjectButton'
 const projects = [
   {
     number: '01',
-    title: 'E-commerce Website',
-    category: 'Freelance',
+    title: 'AI Upload Guardian',
+    category: 'Chrome Extension',
     images: {
       col1: [
         'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
@@ -15,7 +15,7 @@ const projects = [
       ],
       col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
     },
-    link: 'https://ngenev.com',
+    link: 'https://github.com/mdsahban/ai-upload-guardian',
   },
   {
     number: '02',
@@ -54,12 +54,12 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 0.5', 'end 0.5'],
+    offset: ['start start', 'end start'],
   })
 
   const totalCards = projects.length
-  const targetScale = 1 - (totalCards - 1 - index) * 0.03
-  const scale = useTransform(scrollYProgress, [0, 1], [targetScale, 1])
+  const targetScale = 1 - (totalCards - 1 - index) * 0.05
+  const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale])
 
   return (
     <motion.div
@@ -136,7 +136,7 @@ export default function ProjectsSection() {
       </FadeIn>
 
       {/* Projects */}
-      <div className="max-w-5xl mx-auto relative h-[85vh]">
+      <div className="max-w-5xl mx-auto relative flex flex-col gap-[10vh] pb-[10vh]">
         {projects.map((project, i) => (
           <ProjectCard key={i} project={project} index={i} />
         ))}

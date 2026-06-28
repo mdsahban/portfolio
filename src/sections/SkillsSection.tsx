@@ -3,33 +3,28 @@ import FadeIn from '../components/FadeIn'
 const skills = [
   {
     number: '01',
-    title: 'Cybersecurity',
-    items: ['Log Analysis', 'Phishing Detection', 'Threat Identification', 'SOC Basics', 'Network Security'],
+    title: 'Languages',
+    items: ['Python', 'Java', 'C', 'C++', 'JavaScript'],
   },
   {
     number: '02',
-    title: 'Tools',
-    items: ['Wireshark', 'Windows Event Viewer', 'Linux CLI', 'TryHackMe', 'Git, GitHub, VS Code'],
+    title: 'Frameworks/Web',
+    items: ['HTML', 'CSS', 'Spring Boot', 'REST API', 'WordPress', 'Shopify (Liquid)'],
   },
   {
     number: '03',
-    title: 'Programming Languages',
-    items: ['Python', 'Java', 'C++', 'JavaScript'],
+    title: 'Databases & OS',
+    items: ['MySQL', 'DBMS', 'Linux', 'Windows'],
   },
   {
     number: '04',
-    title: 'Web Development',
-    items: ['HTML', 'CSS', 'JavaScript', 'WordPress'],
+    title: 'Security',
+    items: ['Burp Suite', 'Splunk', 'Nmap', 'Network Fundamentals', 'Security Concepts'],
   },
   {
     number: '05',
-    title: 'Operating Systems',
-    items: ['Linux', 'Windows'],
-  },
-  {
-    number: '06',
-    title: 'Databases',
-    items: ['MySQL', 'DBMS'],
+    title: 'Tools/Platforms',
+    items: ['Git, GitHub', 'Postman', 'Render, Vercel, Supabase', 'VS Code'],
   },
 ]
 

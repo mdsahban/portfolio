@@ -6,9 +6,10 @@ interface FadeInProps extends Omit<MotionProps, 'children'> {
   duration?: number
   x?: number
   y?: number
-  children: React.ReactNode
+  children?: React.ReactNode
   as?: keyof JSX.IntrinsicElements
   className?: string
+  [key: string]: any
 }
 
 export default function FadeIn({
